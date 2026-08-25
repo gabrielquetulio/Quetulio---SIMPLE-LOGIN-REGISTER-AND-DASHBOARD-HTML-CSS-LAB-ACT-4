@@ -1,0 +1,495 @@
+/* ============================================
+   Shared styles — Login / Register / Dashboard
+   Palette:
+     --bg          #EEF0F8  (page / form-panel background)
+     --surface     #FFFFFF  (card background)
+     --primary     #4C5FD5  (indigo — buttons, links, illustration panel)
+     --primary-dark#3B4BB0
+     --primary-tint#7C8AE8  (lighter indigo, illustration accents)
+     --accent      #FFA857  (warm amber — small highlight only)
+     --text        #24263B  (headings)
+     --text-muted  #6B7280  (labels, helper text)
+     --border      #E1E3EF
+   Fonts: Poppins (headings/brand), Inter (body/inputs)
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #EEF0F8;
+  --surface: #FFFFFF;
+  --primary: #4C5FD5;
+  --primary-dark: #3B4BB0;
+  --primary-tint: #7C8AE8;
+  --accent: #FFA857;
+  --text: #24263B;
+  --text-muted: #6B7280;
+  --border: #E1E3EF;
+  --danger: #E0507A;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+/* ============================================
+   Split-panel shell — used by login & register
+   ============================================ */
+
+.split-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---- Left: illustration panel ---- */
+
+.illustration-panel {
+  flex: 1 1 44%;
+  position: relative;
+  background: linear-gradient(155deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.illustration-panel .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.illustration-panel .brand .logo-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  background: #fff;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.illustration-panel .brand span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.illustration-panel .headline {
+  position: relative;
+  z-index: 2;
+  max-width: 320px;
+}
+
+.illustration-panel .headline h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.illustration-panel .headline p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+}
+
+.illustration-panel .mark {
+  position: absolute;
+  z-index: 1;
+}
+
+.illustration-panel .deco-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+/* ---- Right: form panel ---- */
+
+.form-panel {
+  flex: 1 1 56%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 48px 24px;
+}
+
+.auth-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-card h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.auth-card p.subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.field .input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field .input-icon svg {
+  position: absolute;
+  left: 13px;
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.field input {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 11px 14px 11px 38px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #FBFBFD;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.field input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(76, 95, 213, 0.15);
+  background: var(--surface);
+}
+
+.field-row {
+  display: flex;
+  gap: 14px;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  font-size: 13px;
+}
+
+.form-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+.form-options a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.form-options a:hover {
+  text-decoration: underline;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.auth-footer a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   Dashboard
+   ============================================ */
+
+body.dashboard-body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 8% 12%, rgba(76, 95, 213, 0.08), transparent 40%),
+    radial-gradient(circle at 92% 88%, rgba(255, 168, 87, 0.10), transparent 40%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 24px;
+}
+
+.dashboard-wrapper {
+  width: 100%;
+  max-width: 780px;
+}
+
+.dashboard-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+}
+
+.dashboard-nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboard-nav .brand .logo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--primary);
+  transform: rotate(45deg);
+}
+
+.dashboard-nav .brand span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.dashboard-nav a.logout {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--danger);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: background-color 0.15s ease;
+}
+
+.dashboard-nav a.logout:hover {
+  background: #FDF0F4;
+}
+
+.dashboard-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 16px;
+  padding: 32px 36px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.dashboard-hero .deco {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+}
+
+.dashboard-hero .content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.dashboard-hero .avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.dashboard-hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  margin-bottom: 4px;
+}
+
+.dashboard-hero p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.dashboard-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 36px;
+}
+
+.dashboard-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.stat-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  background: #FBFBFD;
+}
+
+.stat-box .icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(76, 95, 213, 0.10);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-box .icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.stat-box .value {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--text);
+}
+
+.stat-box .label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 860px) {
+  .split-shell {
+    flex-direction: column;
+  }
+  .illustration-panel {
+    flex: none;
+    padding: 32px 28px;
+    min-height: 200px;
+  }
+  .illustration-panel .headline p {
+    display: none;
+  }
+  .form-panel {
+    flex: none;
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .field-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-hero .content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
